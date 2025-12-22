@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import com.kristian.workshop_mongo.DTO.AuthorDTO;
 import com.kristian.workshop_mongo.domain.Post;
 import com.kristian.workshop_mongo.domain.User;
 import com.kristian.workshop_mongo.repository.PostRepository;
@@ -36,8 +37,8 @@ public class Instanciation implements CommandLineRunner {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 		
-		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo, abraços!", maria);
-		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia!", "Acordei feliz", maria);
+		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo, abraços!", new AuthorDTO(maria));
+		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia!", "Acordei feliz", new AuthorDTO(maria));
 		
 		postRepository.saveAll(Arrays.asList(post1,post2));
 		
